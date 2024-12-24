@@ -1,0 +1,1 @@
+本项目使用[LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory/blob/main/README_zh.md)进行模型微调，下面是搭建Llama-factory环境的步骤。
