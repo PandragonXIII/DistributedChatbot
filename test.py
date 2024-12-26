@@ -1,4 +1,5 @@
 import torch
+print(torch.version.cuda)
 import yaml
 print(torch.cuda.is_available())
 with open("./settings.yaml") as f:
