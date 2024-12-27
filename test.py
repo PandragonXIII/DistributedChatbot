@@ -7,9 +7,9 @@ with open("./settings.yaml") as f:
 
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-qwen_path = settings["Qwen25_15_instruct"]["path"]
+qwen_path = settings["Qwen25_15_instruct_AWQ"]["path"]
 # Load the model in half-precision on the available device(s)
-model = AutoModelForCausalLM.from_pretrained(qwen_path, device_map="cuda", torch_dtype="auto")
+model = AutoModelForCausalLM.from_pretrained(qwen_path, device_map="cuda", torch_dtype=torch.float16)
 tokenizer = AutoTokenizer.from_pretrained(qwen_path)
 
 prompt = "Give me a short introduction to large language model."

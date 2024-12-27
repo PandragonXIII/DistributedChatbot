@@ -56,3 +56,31 @@ error:
 转换思路，使用powershell 成功启动Llama-Factory cli, 可以进行推理
 **理论上应该可以训练！**
 但是爆显存了，下次试试量化的qwen
+
+##### 量化模型
+下载了qwen2.5-1.5b-instruct-AWQ
+要安装auto-awq及其依赖triton
+```shell
+pip install triton
+pip install autoawq
+```
+BOT环境目前不太行，换成train环境，BOT有时间改一下
+triton去[huggingface](https://hf-mirror.com/madbuda/triton-windows-builds)找到了windows版本的whl文件
+运行，bitsandbytes有问题：
+```log
+RuntimeError: Failed to import transformers.integrations.bitsandbytes because of the following error (look up to see its traceback):
+DLL load failed while importing libtriton: 动态链接库(DLL)初始化例程失败。
+```
+尝试安装bitsandbytes-windows
+`pip install bitsandbytes-windows`
+同时卸载bitsandbytes
+运行到`model.generate()`出现问题：autoawq```UnboundLocalError: cannot access local variable 'user_has_been_warned' where it is not associated with a value```
+首先尝试重装autoawq,没有效果
+更改[文件](BOTtrain\Lib\site-packages\awq\modules\linear\gemm.py", line 71),添加
+```python
+global user_has_been_warned
+```
+可以运行，爆warning`UserWarning: Using naive (slow) implementation.No module named 'awq_ext'`
+成功生成
+进行完整安装`pip install autoawq[kernels]`
+成功生成，没有报错

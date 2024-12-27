@@ -24,6 +24,10 @@ conda/miniconda is recommended.
 #### 配置要求
 期望显存占用<6G
 #### 训练环境
+运行`envsetup.ps1`，安装依赖
+```shell
+.\envsetup.ps1
+```
 
 #### 运行环境
 

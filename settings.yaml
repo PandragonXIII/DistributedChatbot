@@ -1,2 +1,4 @@
 Qwen25_15_instruct: 
   path: E:\research\models\qwen2.5-1.5b-instruct
+Qwen25_15_instruct_AWQ: 
+  path: E:\research\models\Qwen2.5-1.5B-Instruct-AWQ
