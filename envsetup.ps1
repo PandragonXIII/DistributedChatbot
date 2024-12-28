@@ -16,4 +16,11 @@ if ($CUDA_ver -ne "12.4") {
 # wget -o dependency/triton-windows-builds/resolve/main/triton-3.0.0-cp312-cp312-win_amd64.whl https://hf-mirror.com/madbuda/triton-windows-builds/resolve/main/triton-3.0.0-cp312-cp312-win_amd64.whl
 # install all requirements
 pip install -r BOTtrain_requirements.txt
+# install requirements for llama-factory
+cd libs/LLaMA-Factory
+pip install -e ".[torch,metrics]"
+cd ../..
 # and this should work
+
+# download dataset
+# webnovel
