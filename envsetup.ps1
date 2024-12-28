@@ -10,9 +10,10 @@ if ($CUDA_ver -ne "12.4") {
     pause
     exit
 }
+# Relevant link is included in requirements.txt
 # download special windows package whl
-curl -o dependency/flash_attn-2.7.1.post1+cu124torch2.5.1cxx11abiFALSE-cp312-cp312-win_amd64.whl https://github.com/bdashore3/flash-attention/releases/download/v2.7.1.post1/flash_attn-2.7.1.post1+cu124torch2.5.1cxx11abiFALSE-cp312-cp312-win_amd64.whl
-wget -o dependency/triton-windows-builds/resolve/main/triton-3.0.0-cp312-cp312-win_amd64.whl https://hf-mirror.com/madbuda/triton-windows-builds/resolve/main/triton-3.0.0-cp312-cp312-win_amd64.whl
+# curl -o dependency/flash_attn-2.7.1.post1+cu124torch2.5.1cxx11abiFALSE-cp312-cp312-win_amd64.whl https://github.com/bdashore3/flash-attention/releases/download/v2.7.1.post1/flash_attn-2.7.1.post1+cu124torch2.5.1cxx11abiFALSE-cp312-cp312-win_amd64.whl
+# wget -o dependency/triton-windows-builds/resolve/main/triton-3.0.0-cp312-cp312-win_amd64.whl https://hf-mirror.com/madbuda/triton-windows-builds/resolve/main/triton-3.0.0-cp312-cp312-win_amd64.whl
 # install all requirements
 pip install -r BOTtrain_requirements.txt
 # and this should work

@@ -1,3 +1,4 @@
+cd ./dependency/LLaMA-Factory
 # DISTRIBUTED_ARGS="
 #     --nproc_per_node $NPROC_PER_NODE \
 #     --nnodes $NNODES \

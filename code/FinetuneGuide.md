@@ -84,3 +84,27 @@ global user_has_been_warned
 成功生成
 进行完整安装`pip install autoawq[kernels]`
 成功生成，没有报错
+
+尝试对AWQ模型进行LoRA微调，使用设置`config\qwen25_lora_sft_awq.yaml`
+```shell
+llamafactory-cli train examples/train_qlora/llama3_lora_sft_awq.yaml
+```
+报错
+`RuntimeError: One of the subprocesses has abruptly died during map operation.To debug the error, disable multiprocessing.`
+添加参数`--cache_path`保存预处理数据集 [link](https://github.com/hiyouga/LLaMA-Factory/issues/662#issuecomment-1817487557) 
+非法参数，改为添加`mask_history,streaming` [link](https://github.com/hiyouga/LLaMA-Factory/issues/6302#issuecomment-2531545853), 并将valsize改为整数
+删掉了冲突的max_samples参数,添加max_steps=1000
+可能是由于使用自定义数据集报错`NotImplementedError: Loading a streaming dataset in parallel with `num_proc` is not implemented. To parallelize streaming, you can wrap the dataset with a PyTorch DataLoader using `num_workers` > 1 instead.`,
+TODO 之后尝试从标准源载入数据集
+注释掉了[这里](https://vscode.dev/github/PandragonXIII/DistributedChatbot/blob/master/dependency/LLaMA-Factory/src/llamafactory/data/loader.py#L131)
+报错：`module 'bitsandbytes' has no attribute 'nn'`
+检查发现biitsandbytes-windows版本过低
+尝试重新安装`pip install bitsandbytes --index-url=https://jllllll.github.io/bitsandbytes-windowndbytes-windows-webui`
+仍然报错CUDA Setup failed despite GPU being available. 
+尝试安装多个不同版本0.41.2-0.39.0
+**暂时放弃**
+
+按awq类似的设置配置了`qwen25_lora_sft.yaml`,并卸载了bitsandbytes，成功运行
+
+
+下一步可选地使用`--torch_empty_cache_steps`减少显存消耗(延长训练时间)
