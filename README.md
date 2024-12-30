@@ -36,3 +36,14 @@ conda/miniconda is recommended.
 ### Todo list
 [link](./TODO.md)
 
+
+## 开发
+使用pyinstaller进行打包得到exe
+PYinquirer构建CLI
+#### 使用Github release发布
+```shell
+git tag vx.x.x
+git push origin [tagname]
+```
+
+## 常见问题

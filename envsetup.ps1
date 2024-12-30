@@ -24,3 +24,4 @@ cd ../..
 
 # download dataset
 # webnovel
+wget -c -o libs/LLaMA-Factory/data/novel_cn_token512_50k.json https://hf-mirror.com/datasets/zxbsmk/webnovel_cn/resolve/main/novel_cn_token512_50k.json?download=true
